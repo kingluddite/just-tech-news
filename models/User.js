@@ -2,11 +2,22 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
+const PROTECTED_ATTRIBUTES = ['password'];
+
 // create our User model
 class User extends Model {
   // set up method to run on instance data (per user) to check password
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
+  }
+
+  toJSON() {
+    // hide protected fields
+    const attributes = { ...this.get() };
+    for (const a of PROTECTED_ATTRIBUTES) {
+      delete attributes[a];
+    }
+    return attributes;
   }
 }
 
