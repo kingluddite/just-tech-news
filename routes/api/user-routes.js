@@ -90,4 +90,29 @@ router.delete('/:id', (req, res) => {
     });
 });
 
+// POST Login User
+router.post('/login', (req, res) => {
+  //  Try to find user by their email
+  User.findOne({
+    where: {
+      email: req.body.email,
+    },
+  }).then((dbUserData) => {
+    // no user?
+    if (!dbUserData) {
+      return res.status(400).json({ message: 'User credentials not valid' });
+    }
+
+    // Verify user
+    // return user that was found from Database
+    const validPassword = dbUserData.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      return res.status(400).json({ message: 'User credentials not valid' });
+    }
+
+    res.json({ user: dbUserData, message: 'You are now logged in!' });
+  });
+});
+
 module.exports = router;
