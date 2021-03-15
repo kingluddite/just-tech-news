@@ -36,6 +36,7 @@ router.get('/:id', (req, res) => {
 // POST /api/users
 router.post('/', (req, res) => {
   // expects {username: 'John', email: 'john@john.com', password: '1234'}
+
   User.create({
     username: req.body.username,
     email: req.body.email,
@@ -53,6 +54,7 @@ router.put('/:id', (req, res) => {
   // if req.body has exact key/value pairs to match the model, you can
   //  just use `req.body` instead
   User.update(req.body, {
+    individualHooks: true,
     where: {
       id: req.params.id,
     },
