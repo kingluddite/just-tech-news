@@ -14,9 +14,9 @@ if (process.env.JAWSDB_URL) {
     dialect: 'mysql',
     port: 3306,
     define: {
-      timestamps: true,
-      freezeTableName: true,
-      underscored: true,
+      // timestamps: true,
+      // freezeTableName: true,
+      // underscored: true,
     },
   });
 }
