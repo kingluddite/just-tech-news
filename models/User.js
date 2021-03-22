@@ -81,11 +81,11 @@ User.init(
     // pass in our imported sequelize connection (the direct connection to our Database)
     sequelize,
     // don't automatically create createAt/updatedAt timestamp fields
-    timestamps: false,
+    // timestamps: false,
     // don't pluralize name of database table
-    freezeTableName: true,
+    // freezeTableName: true,
     // use underscores instead of camel-casing (i.e. `comment_text` and not `commentText`)
-    underscored: true,
+    // underscored: true,
     // make it so our model name stays lowercase in the database
     modelName: 'user',
   }
