@@ -81,7 +81,7 @@ User.init(
     // pass in our imported sequelize connection (the direct connection to our Database)
     sequelize,
     // don't automatically create createAt/updatedAt timestamp fields
-    timestamps: false,
+    timestamps: true,
     // don't pluralize name of database table
     freezeTableName: true,
     // use underscores instead of camel-casing (i.e. `comment_text` and not `commentText`)
